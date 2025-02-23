@@ -2,17 +2,13 @@ import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import { Planet } from "@/types/planetTypes";
 import PlanetCard from "@/components/PlanetCard";
-import { StatusBar } from "expo-status-bar";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import InputWithIcon from "@/components/InputWithIcon";
-import IconButton from "@/components/IconButton";
-import CustomTitle from "@/components/CustomTitle";
+import { useSort } from "@/hooks/useSort";
 
 const Planets = () => {
   const [planets, setPlanets] = useState<Planet[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortAsc, setSortAsc] = useState(true);
-  const insets = useSafeAreaInsets();
+  const { sortAsc } = useSort();
 
   useEffect(() => {
     const fetchPlanets = async () => {
@@ -49,16 +45,7 @@ const Planets = () => {
     );
 
   return (
-    <View style={{ ...styles.container, paddingTop: insets.top }}>
-      <StatusBar style="light" />
-      <View style={styles.header}>
-        <CustomTitle primaryText="Let's" secondaryText="Explore" size="large" />
-        <IconButton
-          iconName={sortAsc ? "sort-alpha-desc" : "sort-alpha-asc"}
-          onPress={() => setSortAsc(!sortAsc)}
-          size={25}
-        />
-      </View>
+    <View style={styles.container}>
       <InputWithIcon term={searchTerm} setTerm={setSearchTerm} />
       <FlatList
         data={filteredPlanets}
@@ -72,8 +59,9 @@ const Planets = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
     backgroundColor: "#0B0F2F",
+    padding: 16,
+    paddingTop: 0,
   },
   header: {
     flexDirection: "row",
