@@ -1,29 +1,37 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
+import { useFavorites } from '../../hooks/useFavorites';
+import PlanetCard from '../../components/PlanetCard';
+import { useSort } from '@/hooks/useSort';
 
 const Favorites = () => {
+  const { favorites } = useFavorites();
+  const { sortAsc } = useSort();
+
+  const filteredPlanets = favorites
+  .sort((a, b) =>
+    sortAsc
+      ? a.englishName.localeCompare(b.englishName)
+      : b.englishName.localeCompare(a.englishName)
+  );
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Favoritos</Text>
+      <FlatList
+        data={filteredPlanets}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <PlanetCard planet={item} />}
+      />
     </View>
   );
 };
 
-export default Favorites;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    backgroundColor: "#0B0F2F",
+    padding: 16,
+    paddingTop: 0,
   },
 });
+
+export default Favorites;
