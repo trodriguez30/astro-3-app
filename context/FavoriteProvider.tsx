@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode } from 'react';
-import { Planet } from '../types/planetTypes';
+import { Planet } from '@/types/planetTypes';
 import { FavoritesContextType } from '@/types/contextTypes';
 
 export const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);

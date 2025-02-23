@@ -1,6 +1,6 @@
 import { View, FlatList, StyleSheet } from 'react-native';
-import { useFavorites } from '../../hooks/useFavorites';
-import PlanetCard from '../../components/PlanetCard';
+import { useFavorites } from '@/hooks/useFavorites';
+import PlanetCard from '@/components/PlanetCard';
 import { useSort } from '@/hooks/useSort';
 
 const Favorites = () => {

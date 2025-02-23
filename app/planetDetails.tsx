@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, Button, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { useFavorites } from '../hooks/useFavorites';
-import { Planet } from '../types/planetTypes';
+import { useFavorites } from '@/hooks/useFavorites';
+import { Planet } from '@/types/planetTypes';
 
 const PlanetDetails = () => {
   const { id } = useLocalSearchParams();
