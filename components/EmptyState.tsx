@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import LottieView from "lottie-react-native";
+import emptyAnimation from "@/assets/animations/empty.json"
 
 interface EmptyStateProps {
   message: string;
@@ -11,7 +12,7 @@ const EmptyState= ({ message, animation }: EmptyStateProps) => {
   return (
     <View style={styles.container}>
       <LottieView
-        source={animation || require("@/assets/animations/empty.json")}
+        source={animation || emptyAnimation}
         autoPlay
         loop
         style={styles.animation}
