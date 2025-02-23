@@ -4,9 +4,11 @@ import { Planet } from "@/types/planetTypes";
 import PlanetCard from "@/components/PlanetCard";
 import InputWithIcon from "@/components/InputWithIcon";
 import { useSort } from "@/hooks/useSort";
+import Loading from "@/components/Loading";
 
 const Planets = () => {
   const [planets, setPlanets] = useState<Planet[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState("");
   const { sortAsc } = useSort();
 
@@ -28,6 +30,8 @@ const Planets = () => {
         setPlanets(filteredPlanets);
       } catch (error) {
         console.error("Error al obtener los planetas:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -43,6 +47,10 @@ const Planets = () => {
         ? a.englishName.localeCompare(b.englishName)
         : b.englishName.localeCompare(a.englishName)
     );
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <View style={styles.container}>
