@@ -5,6 +5,7 @@ import PlanetCard from "@/components/PlanetCard";
 import InputWithIcon from "@/components/InputWithIcon";
 import { useSort } from "@/hooks/useSort";
 import Loading from "@/components/Loading";
+import EmptyState from "@/components/EmptyState";
 
 const Planets = () => {
   const [planets, setPlanets] = useState<Planet[]>([]);
@@ -55,11 +56,15 @@ const Planets = () => {
   return (
     <View style={styles.container}>
       <InputWithIcon term={searchTerm} setTerm={setSearchTerm} />
-      <FlatList
-        data={filteredPlanets}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <PlanetCard planet={item} />}
-      />
+      {filteredPlanets.length === 0 ? (
+        <EmptyState message="No results found. Try searching for something else." />
+      ) : (
+        <FlatList
+          data={filteredPlanets}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <PlanetCard planet={item} />}
+        />
+      )}
     </View>
   );
 };
