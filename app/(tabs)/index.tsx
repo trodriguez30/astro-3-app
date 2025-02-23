@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-} from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 import { Planet } from "@/types/planetTypes";
 import PlanetCard from "@/components/PlanetCard";
 import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import InputWithIcon from "@/components/InputWithIcon";
 import IconButton from "@/components/IconButton";
+import CustomTitle from "@/components/CustomTitle";
 
 const Planets = () => {
   const [planets, setPlanets] = useState<Planet[]>([]);
@@ -55,10 +51,8 @@ const Planets = () => {
   return (
     <View style={{ ...styles.container, paddingTop: insets.top }}>
       <StatusBar style="light" />
-      <View style={{ flexDirection: "row" }}>
-      <Text style={styles.title}>
-        Let's <Text style={styles.highlight}>Explore</Text>
-      </Text>
+      <View style={styles.header}>
+        <CustomTitle primaryText="Let's" secondaryText="Explore" size="large" />
         <IconButton
           iconName={sortAsc ? "sort-alpha-desc" : "sort-alpha-asc"}
           onPress={() => setSortAsc(!sortAsc)}
@@ -81,15 +75,11 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: "#0B0F2F",
   },
-  title: {
-    flex: 1,
-    color: "#E0E6F8",
-    fontSize: 50,
-    fontFamily: "OswaldBold",
+  header: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  highlight: {
-    color: "#FFD700",
-  }
 });
 
 export default Planets;
