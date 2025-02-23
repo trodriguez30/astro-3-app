@@ -63,11 +63,6 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingTop: 0,
   },
-  header: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
 });
 
 export default Planets;

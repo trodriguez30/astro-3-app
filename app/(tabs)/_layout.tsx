@@ -15,7 +15,7 @@ function LayoutContent() {
   const pathname = usePathname();
 
   const getTitle = () => {
-    if (pathname === "/favorites")
+    if (pathname.includes("favorites"))
       return { primary: "Your", secondary: "Planets" };
     return { primary: "Let's", secondary: "Explore" };
   };
