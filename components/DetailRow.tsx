@@ -1,3 +1,4 @@
+import { COLORS, FONTS, SIZES } from "@/styles/theme";
 import { StyleSheet, Text, View } from "react-native";
 
 interface DetailRowProps {
@@ -18,19 +19,19 @@ const styles = StyleSheet.create({
   detailRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: 5,
-    borderTopColor: "#fff",
+    marginVertical: SIZES.small,
+    borderTopColor: COLORS.text,
     borderTopWidth: 1,
-    paddingVertical: 10,
+    paddingVertical: SIZES.medium,
   },
   detailLabel: {
-    fontSize: 18,
-    fontFamily: "OswaldMedium",
+    fontSize: SIZES.fontSmall,
+    fontFamily: FONTS.oswaldMedium,
     color: "#FFD700",
   },
   detailValue: {
-    color: "#fff",
-    fontSize: 18,
-    fontFamily: "OswaldRegular",
+    color: COLORS.text,
+    fontSize: SIZES.fontSmall,
+    fontFamily: FONTS.oswaldRegular,
   },
 });

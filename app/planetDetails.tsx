@@ -12,6 +12,7 @@ import IconButton from "@/components/IconButton";
 import LottieView from "lottie-react-native";
 import astroAnimation from "@/assets/animations/astronaut.json";
 import DetailRow from "@/components/DetailRow";
+import { COLORS, SIZES } from "@/styles/theme";
 
 const PlanetDetails = () => {
   const insets = useSafeAreaInsets();
@@ -110,7 +111,7 @@ const PlanetDetails = () => {
           title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
           onPress={() => toggleFavorite(planetDetails)}
           size={30}
-          backgroundColor="#2F365F"
+          backgroundColor={COLORS.secondary}
           color="#fff"
           iconName={isFavorite ? "heart" : "heart-o"}
         />
@@ -132,7 +133,7 @@ const PlanetDetails = () => {
       >
         <IconButton
           iconName="arrow-left"
-          backgroundColor="0B0F2F"
+          backgroundColor={COLORS.background}
           onPress={() => router.back()}
           size={30}
         />
@@ -145,11 +146,11 @@ const PlanetDetails = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0B0F2F",
+    backgroundColor: COLORS.background,
   },
   content: {
     flex: 1,
-    paddingHorizontal: 16,
+    paddingHorizontal: SIZES.extra,
   },
   animation: {
     width: 200,

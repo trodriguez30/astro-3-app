@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import LottieView from "lottie-react-native";
 import emptyAnimation from "@/assets/animations/empty.json"
+import { COLORS, FONTS, SIZES } from "@/styles/theme";
 
 interface EmptyStateProps {
   message: string;
@@ -27,18 +28,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
+    padding: SIZES.large,
   },
   animation: {
     width: 200,
     height: 200,
   },
   message: {
-    marginTop: 16,
-    fontSize: 18,
+    marginTop: SIZES.extra,
+    fontSize: SIZES.fontSmall,
     textAlign: "center",
-    fontFamily: "OswaldMedium",
-    color: "#7A84C1",
+    fontFamily: FONTS.oswaldMedium,
+    color: COLORS.secondary,
   },
 });
 

@@ -7,6 +7,7 @@ import { useSort } from "@/hooks/useSort";
 import Loading from "@/components/Loading";
 import EmptyState from "@/components/EmptyState";
 import errorAnimation from "@/assets/animations/error.json";
+import { COLORS, SIZES } from "@/styles/theme";
 
 const Planets = () => {
   const [planets, setPlanets] = useState<Planet[]>([]);
@@ -91,8 +92,8 @@ const Planets = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0B0F2F",
-    padding: 16,
+    backgroundColor: COLORS.background,
+    padding: SIZES.extra,
     paddingTop: 0,
   },
 });

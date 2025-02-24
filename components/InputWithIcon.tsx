@@ -1,6 +1,7 @@
 import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { COLORS, FONTS, SIZES } from "@/styles/theme";
 
 interface InputWithIconProps {
   term: string;
@@ -10,12 +11,12 @@ interface InputWithIconProps {
 const InputWithIcon = ({ term, setTerm }: InputWithIconProps) => {
   return (
     <View style={styles.inputContainer}>
-      <FontAwesome name="search" size={20} color="#7A84C1" style={styles.icon} />
+      <FontAwesome name="search" size={20} color={COLORS.secondary} style={styles.icon} />
       <TextInput
         style={styles.input}
         placeholder="Buscar planeta"
         value={term}
-        placeholderTextColor={"#7A84C1"}
+        placeholderTextColor={COLORS.secondary}
         onChangeText={setTerm}
       />
     </View>
@@ -26,20 +27,20 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     height: 40,
-    backgroundColor: "#1E2156",
-    borderRadius: 10,
-    marginVertical: 10,
-    paddingHorizontal: 8,
+    backgroundColor: COLORS.blueLight,
+    borderRadius: SIZES.medium,
+    marginVertical: SIZES.medium,
+    paddingHorizontal: SIZES.small,
     alignItems: "center"
   },
   icon: {
-    marginRight: 10,
+    marginRight: SIZES.medium,
   },
   input: {
     flex: 1,
     height: 40,
-    fontFamily: "OswaldRegular",
-    fontSize: 16,
+    fontFamily: FONTS.oswaldRegular,
+    fontSize: SIZES.fontSmall,
     color: "#fff",
   },
 });

@@ -1,6 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { COLORS, FONTS, SIZES } from "@/styles/theme";
 
 interface IconButtonProps {
   onPress: () => void;
@@ -11,7 +12,7 @@ interface IconButtonProps {
   color?: string;
 }
 
-const IconButton= ({ onPress, iconName, title, size, backgroundColor = "#C4A35A", color = "#2F365F" }: IconButtonProps) => {
+const IconButton= ({ onPress, iconName, title, size, backgroundColor = COLORS.iconBackground, color = COLORS.iconColor }: IconButtonProps) => {
   return (
     <TouchableOpacity style={[styles.button, { backgroundColor }]} onPress={onPress}>
         <FontAwesome name={iconName} size={size} color={color} style={title ? styles.icon : {}} />
@@ -25,17 +26,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
-    borderRadius: 8,
-    marginVertical: 10,
+    padding: SIZES.medium,
+    borderRadius: SIZES.small,
+    marginVertical: SIZES.medium,
   },
   icon: {
-    marginRight: 8,
+    marginRight: SIZES.small,
   },
   text: {
     color: "#fff",
-    fontSize: 16,
-    fontFamily: "OswaldBold",
+    fontSize: SIZES.fontSmall,
+    fontFamily: FONTS.oswaldBold,
   },
 });
 

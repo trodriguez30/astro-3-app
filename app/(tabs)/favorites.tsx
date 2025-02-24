@@ -3,6 +3,7 @@ import { useFavorites } from "@/hooks/useFavorites";
 import PlanetCard from "@/components/PlanetCard";
 import { useSort } from "@/hooks/useSort";
 import EmptyState from "@/components/EmptyState";
+import { COLORS, SIZES } from "@/styles/theme";
 
 const Favorites = () => {
   const { favorites } = useFavorites();
@@ -32,8 +33,8 @@ const Favorites = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0B0F2F",
-    padding: 16,
+    backgroundColor: COLORS.background,
+    padding: SIZES.extra,
     paddingTop: 0,
   },
 });

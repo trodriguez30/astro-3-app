@@ -1,3 +1,4 @@
+import { COLORS, FONTS, SIZES } from "@/styles/theme";
 import { Text, StyleSheet } from "react-native";
 
 interface CustomTitleProps {
@@ -7,9 +8,9 @@ interface CustomTitleProps {
 }
 
 const fontSizes = {
-  small: 16,
-  medium: 24,
-  large: 46,
+  small: SIZES.fontSmall,
+  medium: SIZES.fontMedium,
+  large: SIZES.fontLarge,
 };
 
 const CustomTitle = ({
@@ -32,12 +33,12 @@ const CustomTitle = ({
 const styles = StyleSheet.create({
   title: {
     flex: 1,
-    fontFamily: "OswaldBold",
-    color: "#E0E6F8",
+    fontFamily: FONTS.oswaldBold,
+    color: COLORS.text,
     marginBottom: fontSizes.small,
   },
   secondaryText: {
-    color: "#FFD700",
+    color: COLORS.accent,
   },
 });
 

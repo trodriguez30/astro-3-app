@@ -2,6 +2,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import LottieView from "lottie-react-native";
+import { COLORS } from "@/styles/theme";
 
 const Loading = () => {
   return (
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#0B0F2F",
+    backgroundColor: COLORS.background,
   },
   animation: {
     width: 150,

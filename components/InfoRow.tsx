@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { COLORS, FONTS, SIZES } from '@/styles/theme';
 
 interface InfoRowProps {
   iconName: string;
@@ -8,7 +9,7 @@ interface InfoRowProps {
 
 const InfoRow = ({ iconName, label }: InfoRowProps) => (
   <View style={styles.infoRow}>
-    <FontAwesome5 name={iconName} size={20} color="#FFD700" />
+    <FontAwesome5 name={iconName} size={20} color={COLORS.accent} />
     <Text style={styles.detail}>{label}</Text>
   </View>
 );
@@ -17,13 +18,13 @@ const styles = StyleSheet.create({
   infoRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 12,
+    marginBottom: SIZES.medium,
   },
   detail: {
-    fontSize: 18,
-    color: "#B0B8D1",
-    marginLeft: 10,
-    fontFamily: "OswaldRegular"
+    fontSize: SIZES.fontSmall,
+    color: COLORS.secondary,
+    marginLeft: SIZES.medium,
+    fontFamily: FONTS.oswaldRegular
   },
 });
 

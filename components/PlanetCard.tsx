@@ -3,9 +3,10 @@ import { useRouter } from "expo-router";
 import { Planet } from "@/types/planetTypes";
 import InfoRow from "./InfoRow";
 import CustomTitle from "./CustomTitle";
+import { COLORS, SIZES } from "@/styles/theme";
 
 const PlanetCard = ({ planet }: { planet: Planet }) => {
-  const { name, englishName, gravity, meanRadius, avgTemp } = planet;
+  const { name, englishName, gravity, avgTemp } = planet;
   const router = useRouter();
 
   return (
@@ -24,10 +25,10 @@ const PlanetCard = ({ planet }: { planet: Planet }) => {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    backgroundColor: "#1E2156",
-    padding: 16,
-    marginVertical: 8,
-    borderRadius: 8,
+    backgroundColor: COLORS.blueLight,
+    padding: SIZES.extra,
+    marginVertical: SIZES.small,
+    borderRadius: SIZES.small,
   },
 });
 

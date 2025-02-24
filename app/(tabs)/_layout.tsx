@@ -6,6 +6,7 @@ import IconButton from "@/components/IconButton";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SortProvider } from "@/context/SortProvider";
 import { useSort } from "@/hooks/useSort";
+import { COLORS, SIZES } from "@/styles/theme";
 
 function LayoutContent() {
   const { sortAsc, toggleSort } = useSort();
@@ -55,7 +56,7 @@ function LayoutContent() {
                 <FontAwesome
                   name="home"
                   size={40}
-                  color={focused ? "#FFD700" : "#7A84C1"}
+                  color={focused ? COLORS.accent : COLORS.secondary}
                 />
               </View>
             ),
@@ -70,7 +71,7 @@ function LayoutContent() {
                 <FontAwesome
                   name="heart"
                   size={35}
-                  color={focused ? "#FFD700" : "#7A84C1"}
+                  color={focused ? COLORS.accent : COLORS.secondary}
                 />
               </View>
             ),
@@ -92,21 +93,21 @@ export default function TabsLayout() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0B0F2F",
+    backgroundColor: COLORS.background,
   },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    backgroundColor: "#0B0F2F",
+    paddingHorizontal: SIZES.extra,
+    paddingTop: SIZES.medium,
+    backgroundColor: COLORS.background,
   },
   iconContainer: {
     width: 40,
     height: 50,
     justifyContent: "flex-end",
     alignItems: "center",
-    marginTop: 10,
+    marginTop: SIZES.medium,
   },
 });
