@@ -1,5 +1,4 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useRouter } from 'expo-router';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 interface InfoRowProps {
@@ -24,6 +23,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#B0B8D1",
     marginLeft: 10,
+    fontFamily: "OswaldRegular"
   },
 });
 

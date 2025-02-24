@@ -17,7 +17,6 @@ const PlanetCard = ({ planet }: { planet: Planet }) => {
 
       <InfoRow iconName="temperature-high" label={`Temperatura: ${avgTemp} K`} />
       <InfoRow iconName="weight" label={`Gravedad: ${gravity} m/s²`} />
-      <InfoRow iconName="globe" label={`Radio Medio: ${meanRadius} km`} />
 
     </TouchableOpacity>
   );

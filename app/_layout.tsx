@@ -3,6 +3,7 @@ import { FavoritesProvider } from "@/context/FavoriteProvider";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
 
 export const unstable_settings = {
   initialRouteName: "(tabs)",
@@ -31,6 +32,7 @@ export default function Layout() {
 
   return (
     <FavoritesProvider>
+      <StatusBar style="light" backgroundColor="#0B0F2F" />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen

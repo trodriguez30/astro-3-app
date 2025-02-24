@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, Button } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { useFavorites } from "@/hooks/useFavorites";
 import { Planet } from "@/types/planetTypes";
@@ -7,9 +7,15 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Loading from "@/components/Loading";
 import EmptyState from "@/components/EmptyState";
 import errorAnimation from "@/assets/animations/error.json";
+import CustomTitle from "@/components/CustomTitle";
+import IconButton from "@/components/IconButton";
+import LottieView from "lottie-react-native";
+import astroAnimation from "@/assets/animations/astronaut.json";
+import DetailRow from "@/components/DetailRow";
 
 const PlanetDetails = () => {
   const insets = useSafeAreaInsets();
+  const router = useRouter();
   const { id } = useLocalSearchParams();
   const { favorites, toggleFavorite } = useFavorites();
   const [planetDetails, setPlanetDetails] = useState<Planet | null>(null);
@@ -28,14 +34,7 @@ const PlanetDetails = () => {
           throw new Error("Failed to fetch planet details");
         }
         const data = await response.json();
-        setPlanetDetails({
-          id: data.id,
-          name: data.name,
-          englishName: data.englishName,
-          isPlanet: data.isPlanet,
-          mass: data.mass,
-          gravity: data.gravity,
-        });
+        setPlanetDetails(data);
       } catch (err) {
         setError(true);
       } finally {
@@ -56,24 +55,68 @@ const PlanetDetails = () => {
     );
   }
 
-  if (error) {
-    return (
-      <View style={styles.container}>
+  const renderContent = () => {
+    if (error) {
+      return (
         <EmptyState
           animation={errorAnimation}
           message="An error occurred while fetching planet details. Please try again."
         />
-      </View>
-    );
-  }
+      );
+    }
 
-  if (!planetDetails) {
-    return (
-      <View style={styles.container}>
+    if (!planetDetails) {
+      return (
         <EmptyState message="Planet details not available. Please try again later." />
+      );
+    }
+
+    return (
+      <View style={styles.content}>
+        <CustomTitle
+          primaryText={planetDetails.englishName}
+          secondaryText={`(${planetDetails.name})`}
+          size="large"
+        />
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+          <LottieView
+            source={astroAnimation}
+            autoPlay
+            loop
+            style={styles.animation}
+          />
+        </View>
+        <View>
+          <DetailRow label="Adjectives" value="Martian" />
+          <DetailRow
+            label="Aphelion"
+            value={`${planetDetails.aphelion?.toLocaleString()} km²`}
+          />
+          <DetailRow
+            label="Eccentricity"
+            value={planetDetails.eccentricity?.toFixed(4)}
+          />
+          <DetailRow
+            label="Inclination"
+            value={`${planetDetails.inclination}° to ecliptic`}
+          />
+          <DetailRow
+            label="Longitude"
+            value={`${planetDetails.longAscNode}°`}
+          />
+        </View>
+
+        <IconButton
+          title={isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+          onPress={() => toggleFavorite(planetDetails)}
+          size={30}
+          backgroundColor="#2F365F"
+          color="#fff"
+          iconName={isFavorite ? "heart" : "heart-o"}
+        />
       </View>
     );
-  }
+  };
 
   return (
     <View
@@ -82,19 +125,19 @@ const PlanetDetails = () => {
         { paddingTop: insets.top, paddingBottom: insets.bottom },
       ]}
     >
-      <Text style={styles.title}>{planetDetails.englishName}</Text>
-      <Text style={styles.subtitle}>ID: {planetDetails.id}</Text>
-      <Text style={styles.description}>
-        Mass: {planetDetails.mass?.massValue} x 10^
-        {planetDetails.mass?.massExponent} kg
-      </Text>
-      <Text style={styles.description}>
-        Gravity: {planetDetails.gravity} m/s²
-      </Text>
-      <Button
-        title={isFavorite ? "Remove from favorites" : "Add to favorites"}
-        onPress={() => toggleFavorite(planetDetails)}
-      />
+      <View
+        style={{
+          flexDirection: "row",
+        }}
+      >
+        <IconButton
+          iconName="arrow-left"
+          backgroundColor="0B0F2F"
+          onPress={() => router.back()}
+          size={30}
+        />
+      </View>
+      { renderContent() }
     </View>
   );
 };
@@ -102,22 +145,19 @@ const PlanetDetails = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
     backgroundColor: "#0B0F2F",
   },
-  title: {
-    fontSize: 28,
-    color: "#fff",
-    marginBottom: 10,
+  content: {
+    flex: 1,
+    paddingHorizontal: 16,
   },
-  subtitle: {
-    fontSize: 18,
-    color: "#ccc",
+  animation: {
+    width: 200,
+    height: 200,
   },
-  description: {
-    fontSize: 16,
-    color: "#aaa",
-    marginTop: 20,
+  favoriteButton: {
+    alignSelf: "center",
+    marginBottom: 30,
   },
 });
 

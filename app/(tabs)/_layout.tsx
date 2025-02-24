@@ -1,7 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { Tabs, usePathname } from "expo-router";
 import { View, StyleSheet } from "react-native";
-import { StatusBar } from "expo-status-bar";
 import CustomTitle from "@/components/CustomTitle";
 import IconButton from "@/components/IconButton";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -24,7 +23,6 @@ function LayoutContent() {
 
   return (
     <View style={{ ...styles.container, paddingTop: insets.top }}>
-      <StatusBar style="light" />
       <View style={styles.header}>
         <CustomTitle
           primaryText={title.primary}
