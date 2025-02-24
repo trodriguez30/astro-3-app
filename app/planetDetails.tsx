@@ -138,7 +138,7 @@ const PlanetDetails = () => {
           size={30}
         />
       </View>
-      { renderContent() } {/* Render either loading, error, or planet details content */}
+      { renderContent() }
     </View>
   );
 };
