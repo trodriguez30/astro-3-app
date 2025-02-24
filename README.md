@@ -1,50 +1,99 @@
-# Welcome to your Expo app 👋
+# Astro 3 App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Astro 3 App is a mobile application that allows users to explore and manage planets. The app features two main sections: **Let's Explore** and **Your Planets**, and allows users to add planets to their favorites for easy access.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Planet Details**: View detailed information about each planet, such as adjectives, aphelion, eccentricity, inclination, and more.
+- **Favorites**: Add planets to your favorites list and remove them with a single tap.
+- **Animations**: Enjoy interactive animations related to planets and astronauts, powered by Lottie.
+- **Responsive Design**: The app is designed to look great on all screen sizes, using safe area insets to ensure it adapts to different devices.
+- **Error Handling**: Includes error states when data cannot be fetched or when no planet details are available.
 
-   ```bash
-   npm install
-   ```
+## Technologies Used
 
-2. Start the app
+- **React Native**: The app is built using React Native for cross-platform mobile development.
+- **Expo**: Utilized Expo for easy development and deployment of the app.
+- **Lottie**: Lottie animations are used for interactive and engaging visuals.
+- **TypeScript**: The app is written in TypeScript for static typing and better development experience.
+- **npm**: Package manager used for dependencies.
 
-   ```bash
-    npx expo start
-   ```
+## API
 
-In the output, you'll find options to open the app in a
+The app fetches planet details from the **Solar System API**. The API provides data such as:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Planet names
+- Planet attributes (e.g., aphelion, eccentricity, inclination)
+- Planetary characteristics (e.g., moons, distance from the sun)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Endpoints
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+- **All Planets**:  
+  To get a list of all the bodies (planets, moons, etc.) in the solar system, use:
+  
+```
+https://api.le-systeme-solaire.net/rest/bodies/
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
+- **Planet Details**:  
+To get detailed information about a specific planet by its ID, use:
 
-To learn more about developing your project with Expo, look at the following resources:
+```
+https://api.le-systeme-solaire.net/rest/bodies/{id}
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Folder Structure
+```
+astro-3-app/
+├── app/                # Contains main screens and routes
+├── assets/             # Static files such as images, animations, etc.
+├── components/         # Reusable UI components
+├── contexts/           # Context providers (e.g., FavoriteProviders, SortProviders)
+├── hooks/              # Custom hooks
+├── types/              # Type definitions for TypeScript
+├── styles/             # Global styles and constants
+```
 
-## Join the community
+## Key Components
 
-Join our community of developers creating universal apps.
+- **CustomTitle**: Displays a title with a specific design.
+- **EmptyState**: A component to show empty states with customizable messages.
+- **IconButton**: A button component with an icon, used throughout the app for actions.
+- **InputWithIcon**: A component that combines a textinput and an icon.
+- **Loading**: A component shown when the app is loading content.
+- **PlanetCards**: Displays cards with information about planets.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Tabs
+
+The app features two main tabs:
+
+1. **Let's Explore**: A section for discovering new planets.
+2. **Your Planets**: A section for managing your favorite planets.
+
+## Context Providers
+
+- **FavoriteProviders**: Manages a list of favorite planets.
+- **SortProviders**: Provides sorting functionality for the planets.
+
+## Custom Hooks
+
+- **useFavorites**: Custom hook for interacting with favorite planets.
+- **useSort**: Custom hook for sorting planets.
+
+## Installation
+
+To get started with the project, clone the repository and install the dependencies:
+
+```bash
+git clone <repository-url>
+cd astro-3-app
+npm install
+```
+
+## Running the App
+
+```bash
+npm run start
+```
+

@@ -7,6 +7,7 @@ export const SortContext = createContext<SortContextType | undefined>(undefined)
 export const SortProvider = ({ children }: { children: React.ReactNode }) => {
   const [sortAsc, setSortAsc] = useState(true);
 
+  // Toggle the sorting order
   const toggleSort = () => setSortAsc((prev) => !prev);
 
   return (

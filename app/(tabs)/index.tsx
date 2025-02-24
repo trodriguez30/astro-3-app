@@ -17,6 +17,7 @@ const Planets = () => {
   const [error, setError] = useState(false);
   const { sortAsc } = useSort();
 
+  // Fetch planet data from the API
   const fetchPlanets = useCallback(async () => {
     try {
       setRefreshing(true);
@@ -30,7 +31,7 @@ const Planets = () => {
 
       const data = await response.json();
       const filteredPlanets = data.bodies.filter(
-        (body: Planet) => body.isPlanet
+        (body: Planet) => body.isPlanet // Filter only planets from the API response
       );
 
       setPlanets(filteredPlanets);
@@ -46,6 +47,7 @@ const Planets = () => {
     fetchPlanets();
   }, [fetchPlanets]);
 
+  // Filter and sort the planets based on the search term and sorting order
   const filteredPlanets = planets
     .filter((planet) =>
       planet.englishName.toLowerCase().includes(searchTerm.toLowerCase())

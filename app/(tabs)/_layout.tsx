@@ -9,11 +9,13 @@ import { useSort } from "@/hooks/useSort";
 import { COLORS, SIZES } from "@/styles/theme";
 
 function LayoutContent() {
+  // Getting the sorting logic and the current sort state (ascending or descending)
   const { sortAsc, toggleSort } = useSort();
   const insets = useSafeAreaInsets();
 
   const pathname = usePathname();
 
+  // Determine the title based on the current screen
   const getTitle = () => {
     if (pathname.includes("favorites"))
       return { primary: "Your", secondary: "Planets" };

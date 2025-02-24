@@ -7,6 +7,7 @@ export const FavoritesContext = createContext<FavoritesContextType | undefined>(
 export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
   const [favorites, setFavorites] = useState<Planet[]>([]);
 
+  // Add or remove planets from the favorites list
   const toggleFavorite = (planet: Planet) => {
     setFavorites((prev) =>
       prev.some((fav) => fav.id === planet.id)
